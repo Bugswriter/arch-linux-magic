@@ -23,7 +23,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
-arch-chroot /mnt ./smas2.sh 
+arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
@@ -48,7 +48,7 @@ mkdir /boot/efi
 mount $efipartition /boot/efi 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman --noconfirm -S pulseaudio pulseaudio-alsa alsa-utils xorg xorg-apps xclip xwallpaper xorg-xinit dmenu firefox vim vi nano wget dhcpcd xdg-user-dirs zsh networkmanager
+pacman --noconfirm -S pulseaudio pulseaudio-alsa alsa-utils xorg xorg-apps xclip xwallpaper xorg-xinit dmenu firefox vim vi nano wget dhcpcd xdg-user-dirs zsh networkmanager pamixer unzipblueman
 systemctl enable NetworkManager.service 
 visudo
 echo "Enter Username: "
