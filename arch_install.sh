@@ -48,15 +48,13 @@ mkdir /boot/efi
 mount $efipartition /boot/efi 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman --noconfirm -S pulseaudio pulseaudio-alsa alsa-utils xorg xorg-apps xclip xwallpaper xorg-xinit dmenu firefox vim vi nano wget dhcpcd xdg-user-dirs zsh networkmanager pamixer unzip blueman
+pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
-visudo
-echo "Enter Username: "
-read username
-useradd -m -G wheel -s /bin/bash $username
-passwd $username
+rm /arch_install2.sh
+
+#visudo
+#echo "Enter Username: "
+#read username
+#useradd -m -G wheel -s /bin/bash $username
+#passwd $username
 echo "Pre-Installation Finish Reboot now"
-
-
-
- 
