@@ -32,4 +32,4 @@ echo "exec dwm" >> ~/.xinitrc
 # ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i 's/random/alanpeabody/g' ~/.zshrc
-echo "PATH='/home/raj/.local/bin:$PATH'" >> ~/.xinitrc
+echo "PATH='/home/$USER/.local/bin:$PATH'" >> ~/.xinitrc

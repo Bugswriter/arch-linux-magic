@@ -3,6 +3,7 @@ echo "Welcome to Arch Linux Magic Script"
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
+lsblk
 echo "Enter the drive: "
 read drive
 cfdisk $drive 
