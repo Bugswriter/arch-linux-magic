@@ -67,11 +67,12 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB 
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
-rm /arch_install2.sh
 
+echo "Enter Username: "
+read username
+useradd -m users -G wheel -s /bin/bash $username
+passwd $username
 #visudo
-#echo "Enter Username: "
-#read username
-#useradd -m -G wheel -s /bin/bash $username
-#passwd $username
+#echo "%wheel ALL=(ALL) ALL" >> visudo
 echo "Pre-Installation Finish Reboot now"
+rm /arch_install2.sh
