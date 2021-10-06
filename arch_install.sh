@@ -12,8 +12,8 @@ echo "Enter the root partition: "
 read rootpartition
 mkfs.ext4 $rootpartition 
 
-read -p "Did you also create separate home partition? [y/n]" answer
-if [[ $answer = y ]] ; then
+read -p "Did you also create separate home partition? [y/n]" answerhome
+if [[ $answerhome = y ]] ; then
   echo "Enter home partition: "
   read homepartition
   mkfs.ext4 $homepartition
@@ -21,17 +21,17 @@ if [[ $answer = y ]] ; then
   mount $homepartition /mnt/home
 fi
 
-read -p "Did you also create swap partition? [y/n]" answer
-if [[ $answer = y ]] ; then
+read -p "Did you also create swap partition? [y/n]" answerswap
+if [[ $answerswap = y ]] ; then
   echo "Enter swap partition: "
   read swappartition
   mkswap $swappartition
   swapon $swappartition
 fi
 
-read -p "Did you also create efi partition? [y/n]" answer
+read -p "Did you also create efi partition? [y/n]" answerefi
 
-if [[ $answer = y ]] ; then
+if [[ $answerefi = y ]] ; then
   echo "Enter EFI partition: "
   read efipartition
   mkfs.vfat -F 32 $efipartition
@@ -65,14 +65,17 @@ passwd
 pacman --noconfirm -S grub efibootmgr os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --removable
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman --noconfirm -S dhcpcd networkmanager 
+pacman --noconfirm -S dhcpcd networkmanager vim
 systemctl enable NetworkManager.service 
 
 echo "Enter Username: "
 read username
-useradd -m users -G wheel -s /bin/bash $username
+useradd -m -g users -G wheel -s /bin/bash $username
 passwd $username
 #visudo
-#echo "%wheel ALL=(ALL) ALL" >> visudo
+read -p "Search # %wheel ALL=(ALL) ALL then uncomment and save it to give your user sudo privilege. [y/n]" answerwheel
+if [[ $answerwheel = y ]] ; then
+  EDITOR=vim visudo
+fi
 echo "Pre-Installation Finish Reboot now"
 rm /arch_install2.sh
