@@ -30,7 +30,6 @@ if [[ $answerswap = y ]] ; then
 fi
 
 read -p "Did you also create efi partition? [y/n]" answerefi
-
 if [[ $answerefi = y ]] ; then
   echo "Enter EFI partition: "
   read efipartition
