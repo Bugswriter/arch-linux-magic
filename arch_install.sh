@@ -7,19 +7,39 @@ lsblk
 echo "Enter the drive: "
 read drive
 cfdisk $drive 
-echo "Enter the linux partition: "
-read partition
-mkfs.ext4 $partition 
+lsblk
+echo "Enter the root partition: "
+read rootpartition
+mkfs.ext4 $rootpartition 
+
+read -p "Did you also create separate home partition? [y/n]" answer
+if [[ $answer = y ]] ; then
+  echo "Enter home partition: "
+  read homepartition
+  mkfs.ext4 $homepartition
+  mkdir /mnt/home
+  mount $homepartition /mnt/home
+fi
+
+read -p "Did you also create swap partition? [y/n]" answer
+if [[ $answer = y ]] ; then
+  echo "Enter swap partition: "
+  read swappartition
+  mkswap $swappartition
+  swapon $swappartition
+fi
+
 read -p "Did you also create efi partition? [y/n]" answer
 
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
   read efipartition
   mkfs.vfat -F 32 $efipartition
+  mkdir -p /mnt/boot/efi
+  mount $efipartition /mnt/boot/efi
 fi
-
-mount $partition /mnt 
-pacstrap /mnt base base-devel linux linux-firmware
+mount $rootpartition /mnt
+pacstrap /mnt base base-devel linux-lts linux-firmware linux-lts-headers
 genfstab -U /mnt >> /mnt/etc/fstab
 
 sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
@@ -43,11 +63,7 @@ echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
 pacman --noconfirm -S grub efibootmgr os-prober
-echo "Enter EFI partition: " 
-read efipartition
-mkdir /boot/efi
-mount $efipartition /boot/efi 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
