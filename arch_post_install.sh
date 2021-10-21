@@ -13,8 +13,8 @@ sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-
      noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
-     zip unzip unrar p7zip xdotool \
-     dosfstools ntfs-3g git \
+     zip unzip unrar p7zip xdotool papirus-icon-theme \
+     dosfstools ntfs-3g git sxhkd \
      vim emacs arc-gtk-theme rsync \
      xcompmgr libnotify dunst slock 
      

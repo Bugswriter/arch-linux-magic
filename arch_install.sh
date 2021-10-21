@@ -57,4 +57,3 @@ read username
 useradd -m -G wheel -s /bin/zsh $username
 passwd $username
 echo "Pre-Installation Finish Reboot now"
-rm /arch_install2.sh
