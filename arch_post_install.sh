@@ -36,4 +36,4 @@ baph -inN libxft-bgra-git brave-bin
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
-rm ~/.zshrc
+rm ~/.zshrc ~/.zsh_history
