@@ -1,0 +1,18 @@
+1 - asking for drive 
+2 - asking for linux partition
+3 - proceed anyway ext4
+4 - did you create efi partition
+5 - efi partition name
+6 - hostname
+7 - new root password
+8 - retype root password
+9 - again efi partition name
+10 - enter username
+11 - new user password
+12 - retype user password
+13 - baph install yes confirmation
+14 - libxft remove
+15 - again y for baph
+16 - y for brave
+17 - Y for ohmyzsh default shell
+18 - password of user for default shell change
