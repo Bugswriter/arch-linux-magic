@@ -49,9 +49,19 @@ mkdir /boot/efi
 mount $efipartition /boot/efi 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman --noconfirm -S dhcpcd networkmanager vi zsh
+pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xbacklight xorg-xprop \
+     noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels \
+     sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
+     fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
+     zip unzip unrar p7zip xdotool papirus-icon-theme \
+     dosfstools ntfs-3g git sxhkd zsh \
+     vim emacs arc-gtk-theme rsync \
+     xcompmgr libnotify dunst slock \
+     dhcpcd networkmanager rsync
+
 systemctl enable NetworkManager.service 
-visudo
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/zsh $username
