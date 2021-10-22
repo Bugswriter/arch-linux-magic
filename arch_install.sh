@@ -48,12 +48,12 @@ mount $efipartition /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xbacklight xorg-xprop \
-     noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
+     noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim emacs arc-gtk-theme rsync \
+     vim emacs arc-gtk-theme rsync firefox \
      xcompmgr libnotify dunst slock \
      dhcpcd networkmanager rsync pamixer
 
@@ -84,13 +84,19 @@ git clone --depth=1 https://github.com/Bugswriter/dmenu.git ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
 git clone --depth=1 https://github.com/Bugswriter/baph.git ~/.local/src/baph
 sudo make -C ~/.local/src/baph install
-baph -inN libxft-bgra-git brave-bin 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo pacman -R --noconfirm libxft
+git clone --depth=1 https://github.com/uditkarode/libxft-bgra
+cd libxft-bgra
+sh autogen.sh --sysconfdir=/etc --prefix=/usr --mandir=/usr/share/man
+sudo make install
+cd $HOME
+rm -rf libxft-bgra
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
-
 mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/ss
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dots config --local status.showUntrackedFiles no
 exit
