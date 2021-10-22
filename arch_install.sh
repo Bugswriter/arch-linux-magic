@@ -53,11 +53,13 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim emacs arc-gtk-theme rsync firefox \
+     vim emacs arc-gtk-theme rsync firefox dash \
      xcompmgr libnotify dunst slock \
      dhcpcd networkmanager rsync pamixer
 
 systemctl enable NetworkManager.service 
+rm /bin/sh
+ln -s dash /bin/sh
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "Enter Username: "
 read username
