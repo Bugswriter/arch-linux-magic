@@ -51,8 +51,8 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
-     zip unzip unrar p7zip xdotool papirus-icon-theme \
-     dosfstools ntfs-3g git sxhkd zsh \
+     zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
+     dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim emacs arc-gtk-theme rsync \
      xcompmgr libnotify dunst slock \
      dhcpcd networkmanager rsync pamixer
@@ -86,10 +86,11 @@ git clone --depth=1 https://github.com/Bugswriter/baph.git ~/.local/src/baph
 sudo make -C ~/.local/src/baph install
 baph -inN libxft-bgra-git brave-bin 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
 
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
+
+mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/ss
 exit
