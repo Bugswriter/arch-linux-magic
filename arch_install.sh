@@ -1,7 +1,12 @@
 # == MY ARCH SETUP INSTALLER == #
 #part1
+echo '\033c'
 echo "Welcome to Arch Linux Magic Script"
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 15
+read -p "Do you want to automatically select the fastest mirrors? [y/n]" answer
+if [[ $answer = y ]] ; then
+  echo "Selecting the fastest mirrors"
+  reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 5
+fi
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
@@ -28,7 +33,8 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 15
+echo '\033c'
+pacman -S sed --noconfirm
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
@@ -81,6 +87,7 @@ su -c $ai3_path -s /bin/sh $username
 exit 
 
 #part3
+echo '\033c'
 cd $HOME
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/bugswriter/dotfiles.git tmpdotfiles
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
