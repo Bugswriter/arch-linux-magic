@@ -1,6 +1,7 @@
 # == MY ARCH SETUP INSTALLER == #
 #part1
 echo "Welcome to Arch Linux Magic Script"
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
