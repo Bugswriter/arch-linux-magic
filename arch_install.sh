@@ -1,8 +1,8 @@
 # == MY ARCH SETUP INSTALLER == #
 #part1
 echo "Welcome to Arch Linux Magic Script"
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
-sed -i "s/^#ParallelDownloads = 8$/ParallelDownloads = 10/" /etc/pacman.conf
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 15
+sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
@@ -28,8 +28,8 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
-sed -i "s/^#ParallelDownloads = 8$/ParallelDownloads = 10/" /etc/pacman.conf
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 15
+sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
