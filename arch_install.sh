@@ -1,23 +1,7 @@
 # == MY ARCH SETUP INSTALLER == #
 #part1
 printf '\033c'
-echo "
-                         _..._                                      __                             _________  
-                      .-'_..._''.                              ...-'  |`. ..-'''-.   ..-'''-.     /         | 
-                    .' .'      '.\  .                          |      |  |\.-'''\ \  \.-'''\ \   '-----.   .' 
-                   / .'           .'|                          ....   |  |       | |        | |      .'  .'   
-          .-,.--. . '            <  |                            -|   |  |    __/ /      __/ /     .'  .'     
-    __    |  .-. || |             | |            ____     _____   |   |  |   |_  '.     |_  '.   .'  .'       
- .:--.'.  | |  | || |             | | .'''-.    `.   \  .'    /...'   `--'      `.  \      `.  \'---'         
-/ |   \ | | |  | |. '             | |/.'''. \     `.  `'    .' |         |`.      \ '.       \ '.             
-`" __ | | | |  '-  \ '.          .|  /    | |       '.    .'   ` --------\ |       , |        , |             
- .'.''| | | |       '. `._____.-'/| |     | |       .'     `.   `---------'        | |        | |             
-/ /   | |_| |         `-.______ / | |     | |     .'  .'`.   `.                   / ,'       / ,'             
-\ \._,\ '/|_|                  `  | '.    | '.  .'   /    `.   `.         -....--'  /-....--'  /              
- `--'  `"                         '---'   '---''----'       '----'        `.. __..-' `.. __..-'               
-"
-
-echo "Let it run"
+echo "Welcome to bugswriter's arch installer script"
 reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 5
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 pacman --noconfirm -Sy archlinux-keyring
