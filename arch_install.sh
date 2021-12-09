@@ -1,12 +1,24 @@
 # == MY ARCH SETUP INSTALLER == #
 #part1
 printf '\033c'
-echo "Welcome to Arch Linux Magic Script"
-read -p "Do you want to automatically select the fastest mirrors? [y/n]" answer
-if [[ $answer = y ]] ; then
-  echo "Selecting the fastest mirrors"
-  reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 5
-fi
+echo "
+                         _..._                                      __                             _________  
+                      .-'_..._''.                              ...-'  |`. ..-'''-.   ..-'''-.     /         | 
+                    .' .'      '.\  .                          |      |  |\.-'''\ \  \.-'''\ \   '-----.   .' 
+                   / .'           .'|                          ....   |  |       | |        | |      .'  .'   
+          .-,.--. . '            <  |                            -|   |  |    __/ /      __/ /     .'  .'     
+    __    |  .-. || |             | |            ____     _____   |   |  |   |_  '.     |_  '.   .'  .'       
+ .:--.'.  | |  | || |             | | .'''-.    `.   \  .'    /...'   `--'      `.  \      `.  \'---'         
+/ |   \ | | |  | |. '             | |/.'''. \     `.  `'    .' |         |`.      \ '.       \ '.             
+`" __ | | | |  '-  \ '.          .|  /    | |       '.    .'   ` --------\ |       , |        , |             
+ .'.''| | | |       '. `._____.-'/| |     | |       .'     `.   `---------'        | |        | |             
+/ /   | |_| |         `-.______ / | |     | |     .'  .'`.   `.                   / ,'       / ,'             
+\ \._,\ '/|_|                  `  | '.    | '.  .'   /    `.   `.         -....--'  /-....--'  /              
+ `--'  `"                         '---'   '---''----'       '----'        `.. __..-' `.. __..-'               
+"
+
+echo "Let it run"
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist --protocol https --download-timeout 5
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
