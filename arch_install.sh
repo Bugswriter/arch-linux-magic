@@ -64,7 +64,8 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim emacs arc-gtk-theme rsync firefox dash \
      xcompmgr libnotify dunst slock jq \
-     dhcpcd networkmanager rsync pamixer
+     dhcpcd networkmanager rsync pamixer \
+     zsh-syntax-highlighting
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
