@@ -23,7 +23,7 @@ fi
 mount $partition /mnt 
 pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
-sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
+sed '1,/^#part2$/d' `basename $0` > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
 exit 
@@ -65,7 +65,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      vim emacs arc-gtk-theme rsync firefox dash \
      xcompmgr libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer \
-     zsh-syntax-highlighting
+     zsh-syntax-highlighting xdg-user-dirs
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
@@ -104,7 +104,6 @@ ln -s ~/.config/shell/profile .zprofile
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
-mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/ss
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dots config --local status.showUntrackedFiles no
 exit
