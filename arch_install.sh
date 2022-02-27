@@ -94,9 +94,11 @@ git clone --depth=1 https://github.com/Bugswriter/st.git ~/.local/src/st
 sudo make -C ~/.local/src/st install
 git clone --depth=1 https://github.com/Bugswriter/dmenu.git ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
-git clone --depth=1 https://github.com/Bugswriter/baph.git ~/.local/src/baph
-sudo make -C ~/.local/src/baph install
-baph -inN libxft-bgra-git
+git clone --depth=1  https://aur.archlinux.org/paru.git ~/.local/src/paru
+cd ~/.local/src/paru
+makepkg -si
+cd
+paru -S libxft-bgra-git
 
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
