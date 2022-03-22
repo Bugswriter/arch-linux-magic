@@ -62,8 +62,8 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim emacs arc-gtk-theme rsync firefox dash \
-     xcompmgr libnotify dunst slock jq \
-     dhcpcd networkmanager rsync pamixer \
+     xcompmgr libnotify dunst slock jq aria2 \
+     dhcpcd networkmanager rsync pamixer mpd ncmpcpp \
      zsh-syntax-highlighting xdg-user-dirs
 
 systemctl enable NetworkManager.service 
