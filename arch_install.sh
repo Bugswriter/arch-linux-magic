@@ -58,7 +58,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xbacklight xorg-xprop \
      noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
-     fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
+     fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim emacs arc-gtk-theme rsync firefox dash \
@@ -98,7 +98,7 @@ git clone --depth=1  https://aur.archlinux.org/paru.git ~/.local/src/paru
 cd ~/.local/src/paru
 makepkg -si
 cd
-paru -S libxft-bgra-git
+paru -S libxft-bgra-git yt-dlp-drop-in
 
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
