@@ -63,7 +63,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      emacs-nox arc-gtk-theme rsync qutebrowser dash \
      xcompmgr libnotify dunst slock jq aria2 cowsay \
-     dhcpcd networkmanager rsync pamixer mpd ncmpcpp \
+     dhcpcd connman wpa_supplicant rsync pamixer mpd ncmpcpp \
      zsh-syntax-highlighting xdg-user-dirs libconfig \
      bluez bluez-utils
 
