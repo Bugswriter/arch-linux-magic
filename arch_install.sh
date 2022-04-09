@@ -64,7 +64,8 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      emacs-nox arc-gtk-theme rsync qutebrowser dash \
      xcompmgr libnotify dunst slock jq aria2 cowsay \
      dhcpcd networkmanager rsync pamixer mpd ncmpcpp \
-     zsh-syntax-highlighting xdg-user-dirs
+     zsh-syntax-highlighting xdg-user-dirs libconfig \
+     bluez bluez-utils
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
