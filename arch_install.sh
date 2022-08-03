@@ -67,7 +67,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      zsh-syntax-highlighting xdg-user-dirs libconfig \
      bluez bluez-utils
 
-systemctl enable NetworkManager.service 
+systemctl enable connman.service 
 rm /bin/sh
 ln -s dash /bin/sh
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
