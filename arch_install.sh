@@ -110,7 +110,7 @@ git clone --depth=1 https://github.com/bugswriter/dwmblocks.git ~/.local/src/dwm
 sudo make -C ~/.local/src/dwmblocks install
 
 # pikaur: AUR helper
-git clone https://aur.archlinux.org/pikaur.git
+git clone https://aur.archlinux.org/packages/pikaur
 cd pikaur
 makepkg -fsri
 cd
